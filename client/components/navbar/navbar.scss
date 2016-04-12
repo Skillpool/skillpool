@@ -1,0 +1,20 @@
+.logo-header-img{
+	max-height: 100%;
+}
+
+.navbar-logo{
+	padding: 8px;
+
+}
+.navbar{
+  background-color: $backgroundColor;
+  border: none;
+  margin-bottom: 0px;
+}
+.navbar-default .navbar-nav > li > a{
+  color: white;
+}
+
+.navbar-text {
+  margin-left: 15px;
+}

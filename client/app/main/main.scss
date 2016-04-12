@@ -1,10 +1,10 @@
-.thing-form {
-  margin: 20px 0;
+body {
+  font-family: "Lato", Helvetica, Arial, sans-serif;
+  background-color: #f5f8fa;  
 }
 
-#banner {
-  border-bottom: none;
-  margin-top: -20px;
+.thing-form {
+  margin: 20px 0;
 }
 
 #banner h1 {
@@ -20,8 +20,4 @@
   text-align: center;
   text-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
   background: #4393B9;
-}
-
-.navbar-text {
-  margin-left: 15px;
 }

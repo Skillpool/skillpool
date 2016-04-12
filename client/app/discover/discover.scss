@@ -1,0 +1,57 @@
+.main-container{
+	width: 100%
+}
+
+.left-container{
+	width: 20%;
+} 
+
+.center-container{
+	width: 60%;
+	background-color: yellow;
+	padding-top: 50px;
+}
+
+.right-container{
+	width: 20%;
+}
+
+.left-nav{
+	padding: 50px 2%;
+}
+
+.left-nav li
+{
+	list-style: none;
+	padding: 20px;
+	display: inline-block;
+	width: 100%;
+	border: 1px solid $borderColor;
+}
+
+.inline-block{
+	display: inline-block;
+	vertical-align: top;
+}
+
+.center-block{
+	width: 100%;
+}
+
+.media-card{
+	background-color: white;
+	height: 100px;
+	border: 2px solid black;
+	width: 50%;
+}
+
+.grid-sizer,
+.media-card { width: 100%; display: block;  }
+
+@media screen and (min-width: 1050px) {
+.grid-sizer,
+.media-card { width: 49%; display: block;min-width: 0px; }
+.gutter-sizer { width: 2%; }
+.right-block{display:inline-block;}
+
+}

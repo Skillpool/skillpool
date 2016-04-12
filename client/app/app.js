@@ -10,7 +10,8 @@ angular.module('skillpoolApp', [
   'btford.socket-io',
   'ui.router',
   'ui.bootstrap',
-  'validation.match'
+  'validation.match',
+  'wu.masonry',
 ])
   .config(function($urlRouterProvider, $locationProvider) {
     $urlRouterProvider

@@ -15,6 +15,8 @@ var db = {
 };
 
 // Insert models below
+db.Genre = db.sequelize.import('../api/genre/genre.model'); db.Genre.sync();
+db.Media = db.sequelize.import('../api/media/media.model'); db.Media.sync();
 db.Thing = db.sequelize.import('../api/thing/thing.model'); db.Thing.sync();
 db.User = db.sequelize.import('../api/user/user.model');
 db.User.sync();

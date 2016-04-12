@@ -7,6 +7,13 @@ $fa-font-path: "../bower_components/font-awesome/fonts";
 /**
  * App-wide Styles
  */
+*
+{
+	box-sizing: border-box;
+}
+$backgroundColor: #2f4154;
+$borderColor: #e1e8ed;
+$backgroundColorTabs: #1abc9c;
 
 .browserupgrade {
   margin: 0.2em 0;
@@ -15,11 +22,26 @@ $fa-font-path: "../bower_components/font-awesome/fonts";
   padding: 0.2em 0;
 }
 
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus, .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus
+{
+	background-color: $backgroundColorTabs;
+	color: white;
+}
+
+.navbar-default .navbar-nav > li > a
+{
+	border-left: 1px solid $backgroundColor;
+	border-right: 1px solid $backgroundColor;
+}
+
 // Component styles are injected through grunt
 /* inject:scss */
 @import 'admin/admin.scss';
+@import 'discover/discover.scss';
+@import 'filtersBar/filtersBar.scss';
 @import 'main/main.scss';
 @import '../components/footer/footer.scss';
 @import '../components/modal/modal.scss';
+@import '../components/navbar/navbar.scss';
 @import '../components/oauth-buttons/oauth-buttons.scss';
 /* endinject */
