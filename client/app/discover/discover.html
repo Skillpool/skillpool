@@ -42,17 +42,17 @@
 	</div><div class = "center-container inline-block">
 
 	<div class = "center-block">
-		<div masonry="{ itemSelector: '.media-card', transitionDuration: '0.4s', percentPosition: true, columnWidth: '.grid-sizer', gutter: '.gutter-sizer' }">
+		<div masonry="{ itemSelector: '.masonry-brick', transitionDuration: '0.4s', percentPosition: true, columnWidth: '.grid-sizer', gutter: '.gutter-sizer' }" reload-on-resize >
 			<div class="grid-sizer"></div>
 			<div class="gutter-sizer"></div>
-		   	 <div class="media-card" ng-repeat = "media in discover.mediaDetails">{{media.genre}}</div>
-		    <div class="media-card">This will be 20px wide max.</div>
-		    <div class="media-card">This will be 20px wide max.</div>
-		    <div class="media-card">This will be 20px wide max.</div>
+		   	 <div class="masonry-brick" ng-repeat = "media in discover.mediaDetails">{{media.genre}}{{media.id}}</div>
 		</div>
-		
+		<div class = "load-more-button" ng-click = "discover.loadmore()">LoadMore</div>
+
 	</div>
 	</div><div class = "right-container inline-block">
+		<div ng-click = "discover.refresh()">Refresh</div>
+
 
 
 

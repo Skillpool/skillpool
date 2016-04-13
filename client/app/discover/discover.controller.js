@@ -2,20 +2,42 @@
 (function(){
 
 class DiscoverComponent {
-  constructor($scope, $http) {
+  constructor($scope, $http, $timeout) {
 
-  	this.$http = $http;
-    this.mediaDetails = [];
+    self = this;
+  	self.$http = $http;
+    self.mediaDetails = false;
+    var offset = 0;
+
+    this.loadmore = function() {
+      offset += 10;
+      this.$http.get('/api/media/'+offset).then(response => {
+
+        angular.forEach(response.data.rows, function(row, index) {
+                self.mediaDetails.push(row);
+        });
+
+        console.log(self.mediaDetails);
+
+      });
+    }
+
+    /*$(window).scroll(function () {
+        if ($(document).height() <= $(window).scrollTop() + $(window).height()) {
+          $(".load-more-button").click();
+        }
+     });*/
 
   }
 
   $onInit() {
-    this.$http.get('/api/media').then(response => {
-      this.mediaDetails = response.data;
+    var offset = 0;
+    this.$http.get('/api/media/'+offset).then(response => {
+      this.mediaDetails = response.data.rows;
+      console.log(this.mediaDetails);
+
     });
   }
-
-
 }
 
 angular.module('skillpoolApp')
@@ -24,5 +46,6 @@ angular.module('skillpoolApp')
     controller: DiscoverComponent,
     controllerAs: 'discover',
   });
+ 
 
 })();

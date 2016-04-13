@@ -65,6 +65,15 @@ export function index(req, res) {
     .catch(handleError(res));
 }
 
+export function getAllWithPagination(req, res) {
+  return Media.findAndCountAll({
+    offset: parseInt(req.params.offset),
+    limit: 10
+  })
+    .then(respondWithResult(res))
+    .catch(handleError(res));
+}
+
 // Gets a single Media from the DB
 export function show(req, res) {
   return Media.find({

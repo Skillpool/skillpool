@@ -6,7 +6,8 @@ var controller = require('./media.controller');
 var router = express.Router();
 
 router.get('/', controller.index);
-router.get('/:id', controller.show);
+router.get('/:offset', controller.getAllWithPagination);
+/*router.get('/:id', controller.show);*/
 router.post('/', controller.create);
 router.put('/:id', controller.update);
 router.patch('/:id', controller.update);
