@@ -138,6 +138,7 @@ export function me(req, res, next) {
         return res.status(401).end();
       }
       res.json(user);
+
     })
     .catch(err => next(err));
 }
@@ -147,4 +148,5 @@ export function me(req, res, next) {
  */
 export function authCallback(req, res, next) {
   res.redirect('/');
+
 }

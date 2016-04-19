@@ -34,13 +34,80 @@ $backgroundColorTabs: #1abc9c;
 	border-right: 1px solid $backgroundColor;
 }
 
+.inline-block{
+	display: inline-block;
+	vertical-align: top;
+}
+
+
+
+*
+{
+  box-sizing: border-box;
+}
+
+ .Modal-backdrop
+ {
+   position: fixed;
+   top: 0px;
+   left: 0px;
+   height:100%;
+   width:100%;
+   background: #000;
+   z-index: 1;
+   opacity: 0.5;
+}
+
+.Modal-holder
+{
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  height:100%;
+  width:100%;
+  background: transparent;
+  z-index: 2;
+  padding: 30px 15px;
+
+}
+.Modal-box
+{
+  margin: 0 auto;
+  width: 100%;
+  background: #fff;
+  padding: 15px;
+  border-radius: 4px;
+  box-shadow: 1px 2px 5px rgba(0,0,0,0.3);
+  position: relative;
+}
+
+@media screen and (min-width: 992px)
+{
+  .Modal-box
+  {
+    width: 50%;
+    padding: 0px;
+  transition: padding 2s;
+    padding: 30px;
+
+  }
+}
+
+
+
+
+
+
+
 // Component styles are injected through grunt
 /* inject:scss */
 @import 'admin/admin.scss';
 @import 'discover/discover.scss';
-@import 'filtersBar/filtersBar.scss';
+@import 'main example/main.scss';
 @import 'main/main.scss';
+@import '../components/filtersBar/filtersBar.scss';
 @import '../components/footer/footer.scss';
+@import '../components/loginModal/loginModal.scss';
 @import '../components/modal/modal.scss';
 @import '../components/navbar/navbar.scss';
 @import '../components/oauth-buttons/oauth-buttons.scss';

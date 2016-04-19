@@ -12,7 +12,8 @@ angular.module('skillpoolApp', [
   'ui.bootstrap',
   'validation.match',
   'wu.masonry',
-])
+  'angular-images-loaded'
+  ])
   .config(function($urlRouterProvider, $locationProvider) {
     $urlRouterProvider
       .otherwise('/');

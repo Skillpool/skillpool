@@ -1,4 +1,5 @@
 import passport from 'passport';
+import sequelize from 'sequelize';
 import {Strategy as FacebookStrategy} from 'passport-facebook';
 
 export function setup(User, config) {
@@ -12,12 +13,17 @@ export function setup(User, config) {
     ]
   },
   function(accessToken, refreshToken, profile, done) {
-    User.find({where:{'facebook.id': profile.id}})
+    /*User.find({where:{'facebook.id': profile.id}})*/
+
+    User.find({where:sequelize.where(
+                sequelize.literal('facebook->"$.id"'),
+                profile.id
+              )
+    })
       .then(user => {
         if (user) {
           return done(null, user);
         }
-
         user = User.build({
           name: profile.displayName,
           email: profile.emails[0].value,

@@ -11,10 +11,10 @@ router
     scope: ['email', 'user_about_me'],
     failureRedirect: '/signup',
     session: false
-  }))
+  }),setTokenCookie)
   .get('/callback', passport.authenticate('facebook', {
     failureRedirect: '/signup',
     session: false
-  }), setTokenCookie);
+  }), setTokenCookie)
 
 export default router;

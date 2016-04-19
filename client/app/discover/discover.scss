@@ -1,60 +1,71 @@
-.main-container{
+.discover-container{
 	width: 100%
 }
 
-.left-container{
-	width: 20%;
-} 
-
-.center-container{
+.discover-container .center-container{
 	width: 60%;
 	padding-top: 50px;
 }
 
-.right-container{
+.discover-container .right-container{
 	width: 20%;
 }
 
-.left-nav{
-	padding: 50px 10%;
-}
-.left-nav ul{
-	padding: 0px;
-}
-
-.left-nav li
-{
-	list-style: none;
-	padding: 20px;
-	display: inline-block;
-	width: 100%;
-	border: 1px solid $borderColor;
-}
-
-.inline-block{
-	display: inline-block;
-	vertical-align: top;
-}
-
-.center-block{
+.discover-container .center-block{
 	width: 100%;
 }
 
-.masonry-brick{
+.discover-container .masonry-brick{
 	background-color: white;
-	height: 100px;
 	border: 1px solid $borderColor;
 	width: 50%;
-	margin-bottom: 10px;
+	margin-bottom: 13px;
 }
 
-.grid-sizer,
-.masonry-brick { width: 100%; display: block;  }
+.discover-container .grid-sizer,
+.discover-container .masonry-brick { width: 100%; display: block;  }
 
 @media screen and (min-width: 850px) {
-.grid-sizer,
-.masonry-brick { width: 49%; display: block;min-width: 0px; }
-.gutter-sizer { width: 2%; }
-.right-block{display:inline-block;}
+.discover-container .grid-sizer,
+.discover-container .masonry-brick { width: 49%; display: block;min-width: 0px; }
+.discover-container .gutter-sizer { width: 2%; }
+.discover-container .right-block{display:inline-block;}
 
+}
+
+
+
+
+.left-container{
+  width: 20%;
+  float: left;
+} 
+.left-nav{
+  padding: 50px 10%;
+}
+.left-nav ul{
+  padding: 0px;
+  background-color:white;
+  border-bottom: 1px solid $borderColor;
+}
+.left-nav li
+{
+  list-style: none;
+  display: inline-block;
+  width: 100%;
+  border: 1px solid $borderColor;
+  border-bottom: none;
+}
+
+.left-nav-tabs{
+  display: block;
+  padding: 20px;
+  color: #16a085;
+}
+.active{
+  background-color: $backgroundColorTabs;
+  color: white;
+}
+.active a{
+  color: white;
 }

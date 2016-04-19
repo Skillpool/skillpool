@@ -1,60 +1,87 @@
-<div class = "main-container">
+<div class = "discover-container">
 
-	<div class = "left-container inline-block">
-		<div class = "left-nav">
+<div class = "left-container inline-block">
 
-			<ul class>
-				<a ui-sref="main">
-					<li>
-						Home
-					</li>
-				</a>
-				<a ui-sref="discover">
-					<li>
-						Discover
-					</li>
-				</a>
-				<a ui-sref="feed">
-					<li>
-						Feed
-					</li>
-				</a>
-				<a ui-sref="people">
-					<li>
-						People
-					</li>
-				</a>
-				<a ui-sref="favorites">
-					<li>
-						My Favorites
-					</li>
-				</a>
-				<a ui-sref="addWorks">
-					<li>
-						+ Add Works
-					</li>
-				</a>
+      <div class = "left-nav">
+        <ul class>
+          <li  ui-sref-active="active">
+            <a class="left-nav-tabs" ui-sref="main.discover">
+                Discover
+            </a>
+          </li>
+          <li  ui-sref-active="active">
+            <a class="left-nav-tabs" ui-sref="feed">
+                Feed
+            </a>
+          </li>
+          <li  ui-sref-active="active">
+            <a class="left-nav-tabs" ui-sref="people">
+                People
+            </a>
+          </li>
+          <li  ui-sref-active="active">
+            <a class="left-nav-tabs" ui-sref="favorites">
+                My Favorites
+            </a>
+          </li>
+          <li  ui-sref-active="active">
+            <a class="left-nav-tabs" ui-sref="addWorks">
+              + Add Works
+            </a>
+          </li>
+        </ul>
+      </div>
+</div>
+	<div class = "center-container inline-block">
 
-			</ul>
+		<div class = "center-block">
+			<div masonry="{ itemSelector: '.masonry-brick', transitionDuration: '0.4s', percentPosition: true, columnWidth: '.grid-sizer', gutter: '.gutter-sizer' }" data-reload-on-show load-images="true">
+				<div class="grid-sizer"></div>
+				<div class="gutter-sizer"></div>
+
+			   	 <div class="masonry-brick" ng-repeat = "media in discover.mediaDetails">
+			   	 	<div ng-if="media.media_type == 'soundcloud'">
+				   	 	<iframe style = "margin-bottom:-8px" width="100%" height="334px" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/{{media.link}}&amp&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true">
+				   	 	</iframe>
+			   	 	</div>
+			   	 	<div ng-if="media.media_type == 'youtube'">
+			   	 		<!-- <?php
+			   	 			 $url = $media_link;
+			   	 			 preg_match(
+			   	 			   '/[\\?\\&]v=([^\\?\\&]+)/',
+			   	 			   $url,
+			   	 			   $matches
+			   	 			   );
+			   	 			 $id_vid = $matches[1]; 
+			   	 			 ?> -->
+			   	 			 <div class = "youtube">
+			   	 			    <iframe style="margin-bottom:-8px;"width="100%" height="334px" src="https://www.youtube.com/embed/<?php echo $id_vid; ?>" frameborder="0" allowfullscreen></iframe> 
+			   	 			    <div class ="youtube-opn">
+			   	 			       <span class ="fui-resize youtube-open">
+			   	 			       </span>
+			   	 			    </div>
+			   	 			 </div>
+			   	 	</div>
+			   	 	<div class = "images-loaded" ng-if="media.media_type == 'picture'" images-loaded-events="discover.imgLoadedEvents">
+			   	 		  <img style = "width: 100%;" ng-src = "https://pixabay.com/static/uploads/photo/2015/10/01/21/39/background-image-967820_960_720.jpg" />
+			   	 	</div>
+
+			   	 	<div ng-if="media.media_type == 'writing'">
+				   	 	<div class = "media_viewer_blog">
+				   	 	  <span class = "literature-box">
+				   	 	    <!-- <?php echo $media_link; ?> -->
+				   	 	  </span>             
+				   	 	</div>
+			   	 	</div>
+
+			   	 </div>
+
+			</div><div class = "load-more-button" style = "height: 100px; color: white; background-color: black;" ng-click = "discover.loadmore()">LoadMore
+			</div>
+
 		</div>
 
-
-	</div><div class = "center-container inline-block">
-
-	<div class = "center-block">
-		<div masonry="{ itemSelector: '.masonry-brick', transitionDuration: '0.4s', percentPosition: true, columnWidth: '.grid-sizer', gutter: '.gutter-sizer' }" reload-on-resize >
-			<div class="grid-sizer"></div>
-			<div class="gutter-sizer"></div>
-		   	 <div class="masonry-brick" ng-repeat = "media in discover.mediaDetails">{{media.genre}}{{media.id}}</div>
-		</div>
-		<div class = "load-more-button" ng-click = "discover.loadmore()">LoadMore</div>
-
-	</div>
 	</div><div class = "right-container inline-block">
 		<div ng-click = "discover.refresh()">Refresh</div>
-
-
-
-
 	</div>
 </div>

@@ -20,10 +20,7 @@
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
-        <li ng-repeat="item in nav.menu" ui-sref-active="active">
-            <a ui-sref="{{item.state}}">{{item.title}}</a>
-        </li>
-        <li ui-sref-active="active"><a ui-sref="discover">Discover</a></li>
+        <li ui-sref-active="active"><a ui-sref="main.discover">Discover</a></li>
         <li ng-show="nav.isAdmin()" ui-sref-active="active"><a ui-sref="admin">Admin</a></li>
         <li ng-hide="nav.isLoggedIn()" ui-sref-active="active"><a ui-sref="signup">Sign up</a></li>
         <li ng-hide="nav.isLoggedIn()" ui-sref-active="active"><a ui-sref="login">Login</a></li>
