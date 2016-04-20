@@ -12,6 +12,12 @@ function AuthService($location, $http, $cookies, $q, appConfig, Util, User) {
   }
 
   var Auth = {
+    
+    refresh(){
+      if ($cookies.get('token') && $location.path() !== '/logout') {
+        currentUser = User.get();
+      }
+    },
 
     /**
      * Authenticate user and save token

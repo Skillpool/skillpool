@@ -2,12 +2,12 @@
 (function(){
 
 class DiscoverComponent {
-  constructor($scope, $http, $rootScope, $location, Modal, $uibModal, loginModal) {
+  constructor($scope, $http, $rootScope, $location, Modal, $uibModal, loginModal, Auth, $cookies, $window) {
 
     self = this;
   	self.$http = $http;
     self.mediaDetails = false;
-
+    self.Auth = Auth
     self.loginModal = loginModal;
     var offset = 0;
 
@@ -37,6 +37,13 @@ class DiscoverComponent {
      self.loginModal.loginModal();
     }
 
+    this.another = function() {
+      console.log($window.opener)
+      Auth.refresh();
+      self.getCurrentUser = self.Auth.getCurrentUser;
+      console.log($cookies.getAll());
+    }
+
     self.imgLoadedEvents = {
 
             always: function(instance) {
@@ -54,6 +61,15 @@ class DiscoverComponent {
 
                 // Do stuff
             }
+        }
+
+        $window.refreshAuth = function(){
+          Auth.refresh();
+        }
+        
+        if($window.opener != null) {
+          console.log($window.opener);
+          $window.opener.refreshAuth();
         }
 
     /*$scope.modal=Modal.confirm.askToLogin(function(message) { // callback when modal is confirmed
