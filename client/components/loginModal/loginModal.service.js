@@ -4,13 +4,14 @@
 
 class loginModalController {
   //start-non-standard
-  user = {};
-  errors = {};
-  submitted = false;
+  
   //end-non-standard
 
   constructor(Auth, $state, $scope, $uibModalInstance) {
     var self2 = this;
+    self2.user = {};
+    self2.errors = {};
+    self2.submitted = false;
     self2.Auth = Auth;
     self2.$state = $state;
     console.log("WORKING");
@@ -27,7 +28,7 @@ class loginModalController {
         })
         .then(() => {
           // Account created, redirect to home
-          $uibModalInstance.close("jingalala");
+          $uibModalInstance.close("");
 
           /*self.$state.go('main');*/
         })
@@ -46,6 +47,36 @@ class loginModalController {
         });
       }
     }
+
+
+    self2.login = function(form) {
+      console.log(form);
+      self2.submitted = true;
+
+      if (form.$valid) {
+        console.log("kuch toh ho");
+        self2.Auth.login({
+          email: this.user.email,
+          password: this.user.password
+        })
+        .then(() => {
+          console.log("asdasd");
+          $uibModalInstance.close("");
+          // Logged in, redirect to home
+          /*this.$state.go('main');*/
+        })
+        .catch(err => {
+          console.log("error hai");
+          self2.errors.other = err.message;
+        });
+      }
+      else
+      {
+        console.log("form not valid bitch");
+      }
+    }
+
+
   } 
 }
 

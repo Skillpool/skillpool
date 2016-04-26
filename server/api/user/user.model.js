@@ -41,7 +41,11 @@ module.exports = function(sequelize, DataTypes) {
     facebook: DataTypes.JSON,
     twitter: DataTypes.JSON,
     google: DataTypes.JSON,
-    github: DataTypes.JSON
+    github: DataTypes.JSON,
+    profile_complete: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: true
+    } 
 
   }, {
 

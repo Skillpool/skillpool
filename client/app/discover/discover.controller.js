@@ -70,6 +70,18 @@ class DiscoverComponent {
         if($window.opener != null) {
           console.log($window.opener);
           $window.opener.refreshAuth();
+          var getCurrentUser = Auth.getCurrentUser();
+          var profile_complete = getCurrentUser.$promise.then(function(data){
+            var profile_complete = data.profile_complete;
+            if(profile_complete == true)
+            {
+              $window.close();
+            }
+            else
+            {
+              $state.go("UserSettingsModal");
+            }
+          });
         }
 
     /*$scope.modal=Modal.confirm.askToLogin(function(message) { // callback when modal is confirmed

@@ -15,12 +15,26 @@ export function setup(User, config) {
   function(accessToken, refreshToken, profile, done) {
     /*User.find({where:{'facebook.id': profile.id}})*/
 
-    User.find({where:sequelize.where(
+  /*  User.find({where:sequelize.where(
                 sequelize.literal('facebook->"$.id"'),
                 profile.id
               )
     })
-      .then(user => {
+*/
+    User.find({
+      where: {
+        $or: [sequelize.where(
+                      sequelize.literal('facebook->"$.id"'),
+                      profile.id
+          ),
+            sequelize.where(
+                      sequelize.literal('email'),
+                      profile.emails[0].value
+          )
+          
+        ]
+      }
+    }).then(user => {
         if (user) {
           return done(null, user);
         }
@@ -29,7 +43,8 @@ export function setup(User, config) {
           email: profile.emails[0].value,
           role: 'user',
           provider: 'facebook',
-          facebook: profile._json
+          facebook: profile._json,
+          profile_complete:false
         });
         user.save()
           .then(user => done(null, user))
